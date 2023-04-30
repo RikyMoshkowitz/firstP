@@ -1,0 +1,10 @@
+.candidateTable{
+    border: 2px solid springgreen;
+
+    width: 50%;
+    text-align: center;
+    border-color: black;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
