@@ -1,6 +1,6 @@
 import { Langauge } from "./langauge";
 
 export class Candidate {
-    constructor(public id:number,public name:string,public yearBegin:number,public LastUpdateDate:Date,public allLanguage:string ){
+    constructor(public Id:number,public Name:string,public BeginYear:number,public LastUpdateDate:Date,public allLanguages:string ){
     }
 }

@@ -8,10 +8,11 @@
         <th>Languages</th>
     </tr> 
      <tr *ngFor="let can of candidates">
-        <td>{{can.id}}</td>
-        <td>{{can.name}}</td>
-        <td>{{can.yearBegin}}</td>
-        <td>{{can.allLanguage}}</td>
+        <td>{{can.Id}}</td>
+        <td>{{can.Name}}</td>
+        <td>{{can.BeginYear}}</td>
+        <td>{{can.LastUpdateDate}}</td>
+        <td>{{can.allLanguages}}</td>
     </tr>
 </table>
 
@@ -25,11 +26,20 @@
     <input type="text" placeholder="input Senior or Junior" #lev>
     <input type="text" placeholder="input language" #lang>
     <input type="button" value="search" (click)="getMatchCandidates(lang.value,lev.value)">
+    <div *ngFor="let matchCandidate of matchCandidates">
+
+        <label > candidate id : {{matchCandidate.Id}}</label>
+        <br><br>
+        <label > candidate name: {{matchCandidate.Name}}</label>
+        <br><br>
+        <label > candidate year begin: {{matchCandidate.BeginYear}}</label>
+        <br><br>
+        <label > candidate last update date: {{matchCandidate.LastUpdateDate}}</label>
+        <br><br>
+
+        <label> candidate languages:{{matchCandidate.allLanguages}}</label>
+        <br><br>
+
+    </div>
+
 </div>
-<Div *ngFor="let can of matchCandidates">
-    <label>{{can.id}}</label>
-    <label>{{can.name}}</label>
-    <label>{{can.yearBegin}}</label>
-    <label>{{can.LastUpdateDate}}</label>
-    <label>{{can.allLanguage}}</label>
-</Div>

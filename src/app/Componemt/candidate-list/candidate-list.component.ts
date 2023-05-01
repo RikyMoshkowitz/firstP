@@ -31,6 +31,19 @@ export class CandidateListComponent implements OnInit {
           
 
   }
+  
+  
+  public x:number=0;
+  checkCondition(newDate:Date,year:number){
+    var cutString:string ="";
+    var s:string="";
+     s+=newDate.toString();
+     cutString+=s.charAt(0)+s.charAt(1)+s.charAt(2)+s.charAt(3)
+      this. x = parseInt(cutString)-year
+    if(this.x>=3)
+    return true;
+ return false;
+  }
   showCandidateList(){
     this.candidates = this.candidateServ.getCandidateList();
     alert (this.candidates.length);
@@ -39,13 +52,16 @@ export class CandidateListComponent implements OnInit {
   getMatchCandidates(langauge:string,level:string){
     this.candidates = this.candidateServ.getCandidateList();
 
-    if(level==="senyor"){
-  this.senyorList=this.candidates.filter(x=>x.LastUpdateDate.getUTCFullYear()-x.yearBegin>3)
-  this.matchCandidates=this.senyorList.filter(x=>x.allLanguage.includes(langauge))
+    if(level==="Senyor"){
+  this.senyorList=this.candidates.filter(x=>this.checkCondition(x.LastUpdateDate,x.BeginYear)==true)
+  this.matchCandidates=this.senyorList.filter(x=>x.allLanguages.includes(langauge))
     }
   else{
-  this.JuniorList=this.candidates.filter(x=>x.LastUpdateDate.getFullYear()-x.yearBegin<3)
-  this.matchCandidates=this.JuniorList.filter(x=>x.allLanguage.includes(langauge))
+  this.JuniorList=this.candidates.filter(x=>this.checkCondition(x.LastUpdateDate,x.BeginYear)==false)
+  this.matchCandidates=this.JuniorList.filter(x=>x.allLanguages.includes(langauge))
 
-  }}
+  }
+if(this.matchCandidates.length==0)
+alert("there are not match candidate")
+}
 }
