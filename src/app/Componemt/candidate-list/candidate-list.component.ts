@@ -45,8 +45,8 @@ export class CandidateListComponent implements OnInit {
  return false;
   }
   showCandidateList(){
-    this.candidates = this.candidateServ.getCandidateList();
-    alert (this.candidates.length);
+    if(this.candidates.length==0)
+        this.candidates = this.candidateServ.getCandidateList();
     this.showTable=!this.showTable;
   }
   getMatchCandidates(langauge:string,level:string){
